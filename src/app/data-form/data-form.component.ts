@@ -34,8 +34,8 @@ export class DataFormComponent {
   }
 
   categories = [
-    {value: 'Web-Development', viewValue: 'Web Development'},
-    {value: 'Android-Development', viewValue: 'Android Development'},
-    {value: 'IOS-Development', viewValue: 'IOS Development'}
+    {value: 'Web Development', viewValue: 'Web Development'},
+    {value: 'Android Development', viewValue: 'Android Development'},
+    {value: 'IOS Development', viewValue: 'IOS Development'}
   ];
 }
