@@ -33,6 +33,10 @@ export class DataFormComponent {
     console.log(this.blogPost);
   }
 
+  isValid(): boolean {
+    return(this.blogPost.title != '' && this.blogPost.body != '' && this.blogPost.category != '');
+  }
+
   categories = [
     {value: 'Web Development', viewValue: 'Web Development'},
     {value: 'Android Development', viewValue: 'Android Development'},

@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>{{data}}</h1>
-<div mat-dialog-content>
-  <form class="example-form" (ngSubmit)="onSubmit()">
+<form class="example-form" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>{{data}}</h1>
+  <mat-dialog-content class="contentContainer">
     <mat-form-field>
       <input matInput placeholder="Post Title" type="text" required [(ngModel)]="blogPost.title" name="name">
     </mat-form-field>
@@ -14,9 +14,9 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button type="submit" color="primary">Save</button>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
-</div>
+    <button mat-raised-button class="submit" type="submit" color="primary" [disabled]="!isValid()">Save</button>
+  </mat-dialog-content>
+  <div mat-dialog-actions class="actionContainer">
+    <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
+  </div>
+</form>
