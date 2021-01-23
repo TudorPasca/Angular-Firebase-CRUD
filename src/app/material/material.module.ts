@@ -13,6 +13,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -32,6 +34,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    FlexLayoutModule,
+    MatDividerModule
   ],
   exports: [
     MatSidenavModule,
@@ -48,6 +52,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    FlexLayoutModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

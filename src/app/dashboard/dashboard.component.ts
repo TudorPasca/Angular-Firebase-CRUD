@@ -3,6 +3,8 @@ import { FirebaseService } from '../services/firebase.service';
 import { DataFormComponent } from '../data-form/data-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Element } from '../Element';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,25 +12,32 @@ import { Element } from '../Element';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  
+  constructor(private firebaseService: FirebaseService, private authService: AuthService, public dialog: MatDialog) { }
 
-  constructor(private firebaseService: FirebaseService, public dialog: MatDialog) { }
+  displayedColumns = ['date_posted', 'title', 'category', 'open', 'delete', 'edit'];
+  postList: Element[] = [];
+  currentUser;
+  
+  ngOnInit(): void {
+    this.getCurrentUser();
+    this.getPostList();
+  }
+  
+  getCurrentUser() {
+    this.authService.getUserState().subscribe((user) => {
+      console.log("ACCOUNT STATE CHANGE", user);
+      if(user)
+        this.currentUser = user;
+      else
+        this.currentUser = null;
 
-  displayedColumns = ['date_posted', 'title', 'category', 'delete', 'edit'];
-  postList: Element[];
-
-  openDialog(): void {
-    let dialogRef = this.dialog.open(DataFormComponent, {
-      width: '600px',
-      data: 'Add Post'
-    });
-    dialogRef.componentInstance.event.subscribe((result) => {
-      this.firebaseService.addPost(result.data);
       this.getPostList();
     });
   }
-
+  
   getPostList() {
-    let snap = this.firebaseService.getPostsList();
+    let snap = this.firebaseService.getPostsList(this.currentUser.uid);
     snap.snapshotChanges().subscribe(data => {
       this.postList = [];
       data.forEach(item => {
@@ -39,12 +48,20 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.getPostList();
+  addPost(): void {
+    let dialogRef = this.dialog.open(DataFormComponent, {
+      width: '600px',
+      data: 'Add Post'
+    });
+    dialogRef.componentInstance.event.subscribe((result) => {
+      this.firebaseService.addPost(this.currentUser.uid, result.data);
+      //this.getPostList();
+    });
   }
 
   deletePost(id) {
-    this.firebaseService.deletePost(id);
+    //console.log("DELETE");
+    this.firebaseService.deletePost(this.currentUser.uid, id);
     this.getPostList();
   }
 
@@ -54,9 +71,10 @@ export class DashboardComponent implements OnInit {
       data: 'Edit Post'
     });
     dialogRef.componentInstance.event.subscribe((result) => {
-      this.firebaseService.updatePost(result.data, id);
+      this.firebaseService.updatePost(this.currentUser.uid, result.data, id);
       this.getPostList();
     });
   }
+
 
 }

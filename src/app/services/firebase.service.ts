@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Element } from '../Element';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { Observable } from 'rxjs-compat';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,17 @@ export class FirebaseService {
   postsRef: AngularFireList<any>;
   postRef: AngularFireObject<any>;
   
-  getPostsList() {
-    this.postsRef = this.db.list('post');
-    return this.postsRef;
+  getPostsList(uid: string) {
+    return this.db.list('users/' + uid + '/post');
   }
 
-  addPost(post: Element) {
+  getPost(uid: string, id: string){
+    return this.db.object('users/' + uid + '/post/' + id);
+  }
+
+  addPost(uid: string, post: Element) {
     JSON.parse( JSON.stringify(post) );
+    this.postsRef = this.getPostsList(uid);
     this.postsRef.push({
       title: post.title,
       category: post.category,
@@ -26,13 +32,8 @@ export class FirebaseService {
     })
   }
 
-  getPost(id: string) {
-    this.postRef = this.db.object('post/' + id);
-    return this.postRef;
-  }
-
-  updatePost(post: Element, id: string) {
-    this.getPost(id);
+  updatePost(uid: string, post: Element, id: string) {
+    this.postRef = this.getPost(uid, id)
     this.postRef.update({
       title: post.title,
       category: post.category,
@@ -41,8 +42,8 @@ export class FirebaseService {
     })
   }  
 
-  deletePost(id: string) { 
-    this.postRef = this.db.object('post/' + id);
+  deletePost(uid: string, id: string) { 
+    this.postRef = this.getPost(uid, id);
     this.postRef.remove();
   }
 }

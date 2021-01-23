@@ -12,13 +12,24 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { DataFormComponent } from './data-form/data-form.component';
 import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { AuthService } from './services/auth.service';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     DataFormComponent,
+    NavbarComponent,
+    PostDetailComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -29,12 +40,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
     BrowserModule,
     ReactiveFormsModule,
     AngularFireDatabaseModule,
-    FormsModule
+    AngularFireAuthModule,
+    FormsModule,
+    AppRoutingModule
   ],
   entryComponents: [
     DataFormComponent
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
