@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -35,7 +36,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatSelectModule,
     FlexLayoutModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule
   ],
   exports: [
     MatSidenavModule,
@@ -53,7 +55,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatSelectModule,
     FlexLayoutModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

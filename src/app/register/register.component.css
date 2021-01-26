@@ -15,7 +15,6 @@
 }
 
 .content{
-    margin-top: 3vh;
     font-size: 1.1vw;
     margin-left: 1vw;
     margin-right: 1vw;
@@ -60,4 +59,8 @@
 
 .error{
     color: red;
+}
+
+.checkbox{
+    margin-bottom: 2vh;
 }

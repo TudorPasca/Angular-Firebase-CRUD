@@ -18,13 +18,34 @@ export class DashboardComponent implements OnInit {
   displayedColumns = ['date_posted', 'title', 'category', 'open', 'delete', 'edit'];
   postList: Element[] = [];
   currentUser;
-  
+
   ngOnInit(): void {
-    this.getCurrentUser();
-    this.getPostList();
+    this.init();
   }
   
+  init(){
+    if(localStorage.getItem('email') && localStorage.getItem('password'))
+    {
+      console.log("LOGGIN IN");
+      this.authService.login(localStorage.getItem('email'), localStorage.getItem('password'))
+      .then(() => {
+        this.getCurrentUser();
+      });
+    }
+    else
+    {
+      console.log("EMPTY");
+      this.getCurrentUser();
+    }
+  }
+
   getCurrentUser() {
+    if(localStorage.getItem('email') && localStorage.getItem('password'))
+    {
+      console.log("LOGGIN IN");
+      this.authService.login(localStorage.getItem('email'), localStorage.getItem('password'));
+    }
+
     this.authService.getUserState().subscribe((user) => {
       console.log("ACCOUNT STATE CHANGE", user);
       if(user)

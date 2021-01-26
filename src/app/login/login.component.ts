@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FirebaseService } from '../services/firebase.service';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
+import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   };
 
   error = '';
+  checked = false;
 
   constructor(
     private firebaseService: FirebaseService,
@@ -24,23 +26,39 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setSessionPersistance(){
+    return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    .then(() => {
+      return this.authService.login(this.credentials.email, this.credentials.password);
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    });
+  }
+
   async onSubmit(): Promise<void> {
-    const result = await this.authService.login(this.credentials.email, this.credentials.password)
+    const result = await this.setSessionPersistance()
       .then((data) => {
         console.log(data);
         return data;
-        this.credentials.email = this.credentials.password = '';
       }).catch((err) => {
         console.log(err.message);
       })
 
-    if(typeof result == "string" && result.length)
-    {
+    if (typeof result == "string" && result.length) {
       console.log("FAILURE");
       this.error = result;
     }
-    else
-    {
+    else {
+      if(this.checked) {
+        console.log("CHECKED");
+        localStorage.setItem("email", this.credentials.email as string);
+        localStorage.setItem("password", this.credentials.password as string);
+        this.checked = false;
+      }
       console.log("SUCCESS");
       window.location.replace("/home");
     }
