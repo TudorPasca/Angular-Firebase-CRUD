@@ -6,6 +6,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'newsfeed', component: NewsfeedComponent},
+  { path: 'details/key', component: PostDetailComponent},
   { path: '**', component: DashboardComponent}
 ];
 

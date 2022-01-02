@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+      <mat-nav-list fxLayout fxLayoutGap="20px" class="navigation-items">
+        <a mat-list-item routerLink="/home" id="title"> IT NEWS </a>
+        <a mat-list-item routerLink="/home">
+            <mat-icon class="icon">home</mat-icon>
+            <span class="label">Home</span>
+        </a>
+        <a mat-list-item routerLink="/newsfeed">
+            <mat-icon class="icon">article</mat-icon>
+            <span class="label">News</span>
+        </a>
+      </mat-nav-list>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+    <mat-nav-list fxLayout fxLayoutGap="20px" class="navigation-items">
+      <a mat-list-item *ngIf="!(authService.userState | async)" routerLink="/login">
+        <mat-icon class="icon">input</mat-icon>
+        <span class="label">Login</span>
+      </a>
+      <a mat-list-item *ngIf="!(authService.userState | async)" routerLink="/register">
+        <mat-icon class="icon">input</mat-icon>
+        <span class="label">Register</span>
+      </a>
+      <a mat-list-item *ngIf="authService.userState | async" (click)="logout()">
+        <mat-icon class="icon">input</mat-icon>
+        <span class="label">Logout</span>
+      </a>
+    </mat-nav-list>
+  </div>
+</mat-toolbar>

@@ -30,9 +30,10 @@ a {
 }
 
 .title{
-  font-size: 2vw;
+  font-size: xx-large;
 }
 
 .mat-card-subtitle{
-  font-size: 1.2vw;
+  font-size: x-large;
+  color: black;
 }

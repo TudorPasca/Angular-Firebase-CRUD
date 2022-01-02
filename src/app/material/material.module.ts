@@ -16,6 +16,8 @@ import { MatSelectModule } from '@angular/material/select';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
 
 @NgModule({
   declarations: [],
@@ -37,7 +39,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     FlexLayoutModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule,
+    CdkAccordionModule
   ],
   exports: [
     MatSidenavModule,
@@ -56,7 +60,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     FlexLayoutModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule,
+    CdkAccordionModule
   ]
 })
 export class MaterialModule { }

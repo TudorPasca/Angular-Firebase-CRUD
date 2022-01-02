@@ -20,6 +20,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { RegisterComponent } from './register/register.component';
     PostDetailComponent,
     LoginComponent,
     RegisterComponent,
+    ToolbarComponent,
+    NewsfeedComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

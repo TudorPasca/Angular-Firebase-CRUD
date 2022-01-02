@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
         a['$key'] = item.key;
         this.postList.push(a as Element);
       })
-    })
+    });
   }
 
   addPost(): void {

@@ -1,0 +1,22 @@
+#title{
+    font-size: xx-large;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.navigation-items
+{
+    padding-bottom: 1vh;
+}
+
+.label{
+    font-size: large;
+    color: white;
+}
+
+.icon{
+    font-size: x-large;
+    color: white;
+    padding-bottom: 0.5vh;
+}

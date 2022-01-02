@@ -1,33 +1,25 @@
-<app-navbar></app-navbar>
+<app-toolbar></app-toolbar>
 
 <div class="container main-container" *ngIf="!currentUser">
     <div fxLayout="row" fxLayoutAlign="center center" class="content">
         <mat-card class="card">
-            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" class = "title">
-                <h3>Welcome to my website!</h3>
+            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center" class = "title">
+                <h3>Welcome to IT News!</h3>
             </mat-card-title>
             <mat-card-subtitle>
-                To access your account's information, 
-                <a routerLink='/login'>login here.</a>
+                IT News posts the latest news regarding the world of tech. Take a look at our content about crypto, the blockchain and more by accessing the news section through the toolbar or by clicking
+                <a routerLink='/newsfeed'>here</a> 
+                .
             </mat-card-subtitle>
             <mat-card-subtitle>
                 If you don't have an account,
-                <a routerLink='/register'>register here.</a>
+                <a routerLink='/register'>register here</a>
+                . Sign up for our weekly newsletter.
             </mat-card-subtitle>
-            <mat-card-content>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</div>
-
-<div class="container main-container" *ngIf="currentUser && !postList.length">
-    <div fxLayout="row" fxLayoutAlign="center center" class="content">
-        <mat-card class="card">
-            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" class = "title">
-                <h3>Welcome to your dashboard!</h3>
-            </mat-card-title>
             <mat-card-subtitle>
-                You don't have any information stored here yet!
+                To access your account, 
+                <a routerLink='/login'>login here</a>
+                .
             </mat-card-subtitle>
             <mat-card-content>
             </mat-card-content>
@@ -35,52 +27,70 @@
     </div>
 </div>
 
-<div class="container main-container" *ngIf="currentUser && postList.length">
+<div class="container main-container" *ngIf="currentUser">
     <div fxLayout="row" fxLayoutAlign="center center" class="content">
-        <mat-card class="card">
-            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" class = "title">
-                <h3>Recent Posts</h3>
-            </mat-card-title>
-            <mat-card-content>
-                <div class="example-container mat-elevation-z8">
-                    <mat-table #table [dataSource]="postList">
-                        <ng-container matColumnDef="date_posted">
-                            <mat-header-cell *matHeaderCellDef> Date Posted </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.date_posted | date: 'd/M/y'}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="title">
-                            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="category">
-                            <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
-                        </ng-container>
+            <mat-card class="card">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxlayoutAlign="center center" class = "title">
+                    <h3>Welcome to your dashboard!</h3>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    IT News posts the latest news regarding the world of tech. Take a look at our content about crypto, the blockchain and more by accessing the news section through the toolbar or by clicking
+                    <a routerLink='/newsfeed'>here</a> 
+                    .
+                </mat-card-subtitle>
+                <mat-card-content>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    
+<!-- 
+    <div class="container main-container" *ngIf="currentUser && postList.length">
+        <div fxLayout="row" fxLayoutAlign="center center" class="content">
+            <mat-card class="card">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" class = "title">
+                    <h3>Favourite</h3>
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="example-container mat-elevation-z8">
+                        <mat-table #table [dataSource]="postList">
+                            <ng-container matColumnDef="date_posted">
+                                <mat-header-cell *matHeaderCellDef> Date Posted </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.date_posted | date: 'd/M/y'}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="title">
+                                <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="category">
+                                <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+                            </ng-container>
                         <ng-container matColumnDef="open">
                             <mat-header-cell *matHeaderCellDef></mat-header-cell>
                             <mat-cell *matCellDef="let element">
                                 <a  routerLink='/details/{{currentUser.uid}}/{{element.$key}}'
-                                    [queryParams]="{uid: currentUser.uid, $key: element.$key}">
-                                    <mat-icon class="icon">open_in_full</mat-icon>
-                                </a>
-                            </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="delete">
-                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                            <mat-cell *matCellDef="let element">
-                                <a (click)="deletePost(element.$key)" type="button">
-                                    <mat-icon class="icon">delete</mat-icon>
-                                </a>
-                            </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="edit">
-                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                            <mat-cell *matCellDef="let element">
-                                <a (click)="editPost(element.$key)" type="button">
-                                    <mat-icon class="icon">edit</mat-icon>
-                                </a>
-                            </mat-cell>
-                        </ng-container>
+                                [queryParams]="{uid: currentUser.uid, $key: element.$key}">
+                                <mat-icon class="icon">open_in_full</mat-icon>
+                            </a>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <a (click)="deletePost(element.$key)" type="button">
+                                <mat-icon class="icon">delete</mat-icon>
+                            </a>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <a (click)="editPost(element.$key)" type="button">
+                                <mat-icon class="icon">edit</mat-icon>
+                            </a>
+                        </mat-cell>
+                    </ng-container>
                         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
                     </mat-table>
@@ -92,6 +102,7 @@
 
 <div class="blocks addButton" *ngIf="currentUser">
     <button button="submit" mat-raised-button color="primary" (click)="addPost()">
-      <mat-icon>add</mat-icon> Add Post
+        <mat-icon>add</mat-icon> Add Post
     </button>
 </div>
+-->
