@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
     RegisterComponent,
     ToolbarComponent,
     NewsfeedComponent,
+    FavouritesComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -12,11 +12,24 @@ export class NewsService {
   constructor(private db: AngularFireDatabase) {
    }
 
-   getArticlesList() {
+  getArticlesList() {
     return this.db.list('articles');
   }
 
   getArticle(id: string){
-    return this.db.object('articles/' + id);
+    return this.db.object(`articles/${id}`);
   }
+
+  pushFavourite(article: Article) {
+    this.db.list('favourites').push(article);
+  }
+
+  deleteFavourite(key: string) {
+    this.db.list('favourites').remove(key);
+  }
+
+  getFavouritesList() {
+    return this.db.list('favourites');
+  }
+
 }

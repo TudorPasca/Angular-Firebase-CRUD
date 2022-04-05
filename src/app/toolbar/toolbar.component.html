@@ -10,6 +10,10 @@
             <mat-icon class="icon">article</mat-icon>
             <span class="label">News</span>
         </a>
+        <a mat-list-item *ngIf="authService.userState | async" routerLink="/favourites">
+            <mat-icon class="icon">favorite</mat-icon>
+            <span class="label">Favourites</span>
+        </a>
       </mat-nav-list>
   </div>
   <div fxFlex fxLayout="row" fxLayoutAlign="end center">

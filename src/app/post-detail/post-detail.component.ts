@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { FirebaseService } from '../services/firebase.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Subscription } from 'rxjs';
+import { NewsService } from '../services/news.service';
+import { Article } from '../article';
 
 @Component({
   selector: 'app-post-detail',
@@ -16,21 +18,18 @@ export class PostDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    private location: Location
+    private newsService: NewsService
   ) { }
 
   uid: string;
   id: string;
-  post: Element;
+  article: Article;
   private sub: Subscription;
 
   ngOnInit(): void {
-    console.log("GOT HERE!");
     this.sub = this.route.params.subscribe(params => {
-      console.log(params['uid'] + ', ' + params['$key']);
-      this.uid = params['uid'];
-      this.id = params['$key'];
-      this.getPost();
+      this.id = params['id'];
+      this.getArticle();
     })
   }
 
@@ -38,16 +37,13 @@ export class PostDetailComponent implements OnInit {
     this.sub.unsubscribe;
   }
 
-  getPost(): void {
-    //const id = this.route.snapshot.paramMap.get('$key');
-    //console.log(id);
-    let snap = this.firebaseService.getPost(this.uid, this.id);
+  getArticle(): void {
+    let snap = this.newsService.getArticle(this.id);
     snap.snapshotChanges().subscribe(data => {
       let a = data.payload.toJSON();
       console.log(a);
-      a['$key'] = data.key
-      this.post = a as Element;
-      //console.log(this.post);
+      a['key'] = data.key
+      this.article = a as Article;
     })
   }
 }

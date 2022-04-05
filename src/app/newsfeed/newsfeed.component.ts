@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Article } from '../article';
+import { AuthService } from '../services/auth.service';
 import { NewsService } from '../services/news.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { NewsService } from '../services/news.service';
 })
 export class NewsfeedComponent implements OnInit {
 
-  constructor(private newsService: NewsService) { }
+  constructor(private newsService: NewsService, public authService: AuthService) { }
 
   displayedColumns = ['title', 'author'];
   articles: Array<Article>;
@@ -32,5 +33,9 @@ export class NewsfeedComponent implements OnInit {
     this.articles.forEach(i => {
       console.log(i);
     })
+  }
+
+  pushFavourite(article: Article) {
+    this.newsService.pushFavourite(article);
   }
 }

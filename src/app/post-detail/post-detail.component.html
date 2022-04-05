@@ -1,19 +1,18 @@
-<app-navbar></app-navbar>
-
-<mat-card class = "container" *ngIf="post">
-    <mat-card-header>
-        <mat-card-title class = "title">
-            <h3>{{post.title}}</h3>
-        </mat-card-title>
-        <mat-card-subtitle class = "categorySub">{{post.category}}</mat-card-subtitle>
-        <mat-card-subtitle class = "dateSub">{{post.date_posted}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content class = "content">{{post.body}}</mat-card-content>
+<app-toolbar></app-toolbar>
+<mat-card class="container">
+  <mat-card-header>
+    <mat-card-title class="title">
+      <h3>{{ article.title }}</h3>
+    </mat-card-title>
+    <mat-card-subtitle>{{ article.author }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ article.image_url }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="content">{{ article.content }}</mat-card-content>
 </mat-card>
 
 <div class="blocks addButton">
-    <button button="submit" mat-raised-button color="primary" routerLink="/home">
-      <mat-icon>home</mat-icon> Home
-    </button>
+  <button button="submit" mat-raised-button color="primary" routerLink="/home">
+    <mat-icon>home</mat-icon> Home
+  </button>
 </div>

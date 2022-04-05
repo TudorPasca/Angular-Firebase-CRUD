@@ -7,16 +7,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'details/:uid/:$key', component: PostDetailComponent},
+  { path: 'details/:id', component: PostDetailComponent},
   { path: 'navbar', component: NavbarComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'newsfeed', component: NewsfeedComponent},
   { path: 'details/key', component: PostDetailComponent},
+  { path: 'favourites', component: FavouritesComponent},
   { path: '**', component: DashboardComponent}
 ];
 

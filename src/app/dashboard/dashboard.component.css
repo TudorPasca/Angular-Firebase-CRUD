@@ -1,12 +1,6 @@
 .card {
-  min-width: 80%;
-}
-
-.example-container {
-  display: flex;
-  flex-direction: column;
-  max-height: 500px;
-  min-width: 100%;
+  width: 75%;
+  margin-top: 2vh;
 }
 
 .mat-table {
@@ -34,6 +28,13 @@ a {
 }
 
 .mat-card-subtitle{
-  font-size: x-large;
+  font-size: xx-large;
   color: black;
+}
+
+.home-button{
+  width: 50%;
+  height: 7vh;
+  font-size: large;
+  margin-top: 3vh;
 }

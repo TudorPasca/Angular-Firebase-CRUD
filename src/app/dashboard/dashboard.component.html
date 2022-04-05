@@ -1,48 +1,22 @@
 <app-toolbar></app-toolbar>
 
-<div class="container main-container" *ngIf="!currentUser">
-    <div fxLayout="row" fxLayoutAlign="center center" class="content">
+<div class="container main-container">
+    <div fxLayout="column" fxLayoutAlign="center center" class="content">
         <mat-card class="card">
             <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center" class = "title">
-                <h3>Welcome to IT News!</h3>
+                <h2>IT NEWS</h2>
             </mat-card-title>
             <mat-card-subtitle>
-                IT News posts the latest news regarding the world of tech. Take a look at our content about crypto, the blockchain and more by accessing the news section through the toolbar or by clicking
-                <a routerLink='/newsfeed'>here</a> 
-                .
+                IT News posts the latest news regarding the world of tech. Take a look at our content about crypto, the blockchain and more by accessing the news section.
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <button mat-raised-button color="primary" class="home-button" routerLink="/newsfeed">News</button>
+                    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/login">Login</button>
+                    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/register">Register</button>
+                </div>
             </mat-card-subtitle>
-            <mat-card-subtitle>
-                If you don't have an account,
-                <a routerLink='/register'>register here</a>
-                . Sign up for our weekly newsletter.
-            </mat-card-subtitle>
-            <mat-card-subtitle>
-                To access your account, 
-                <a routerLink='/login'>login here</a>
-                .
-            </mat-card-subtitle>
-            <mat-card-content>
-            </mat-card-content>
         </mat-card>
     </div>
 </div>
-
-<div class="container main-container" *ngIf="currentUser">
-    <div fxLayout="row" fxLayoutAlign="center center" class="content">
-            <mat-card class="card">
-                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxlayoutAlign="center center" class = "title">
-                    <h3>Welcome to your dashboard!</h3>
-                </mat-card-title>
-                <mat-card-subtitle>
-                    IT News posts the latest news regarding the world of tech. Take a look at our content about crypto, the blockchain and more by accessing the news section through the toolbar or by clicking
-                    <a routerLink='/newsfeed'>here</a> 
-                    .
-                </mat-card-subtitle>
-                <mat-card-content>
-                </mat-card-content>
-            </mat-card>
-        </div>
-    </div>
     
 <!-- 
     <div class="container main-container" *ngIf="currentUser && postList.length">
