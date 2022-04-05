@@ -1,0 +1,46 @@
+.card {
+    min-width: 80%;
+  }
+  
+  .main-container {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    max-width: 80%;
+  }
+  
+  .title {
+    font-size: xx-large;
+  }
+  
+  .subtitle {
+    font-size: x-large;
+  }
+  
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .card-image {
+    margin-right: 1vw;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    width: 25vw;
+    height: 25vh;
+  }
+  
+  .content-text{
+      font-size: large;
+      flex-grow: 4;
+  }
+  
+  .content{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  }
+  
+  .header{
+    height: 20vh;
+  }

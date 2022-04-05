@@ -1,0 +1,31 @@
+<app-toolbar></app-toolbar>
+
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-expansion-panel *ngFor="let article of articles" class="main-container">
+    <mat-expansion-panel-header class="header">
+      <mat-panel-title class="title">
+        {{ article.title }}
+      </mat-panel-title>
+      <mat-panel-description class="subtitle">
+        {{ article.author }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="content">
+        <mat-divider></mat-divider>
+        <img
+        mat-card-image
+        class="card-image"
+        src="{{ article.image_url }}"
+        alt="Article photo"
+        />
+        <p class="content-text">
+            {{ article.content }}
+        </p>
+    </div>
+    <div *ngIf="authService.userState | async" fxLayoutAlign="center center">
+        <button mat-fab color="warn" (click)="deleteFavourite(article.key)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+  </mat-expansion-panel>
+</div>
