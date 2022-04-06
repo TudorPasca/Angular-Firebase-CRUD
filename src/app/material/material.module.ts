@@ -18,6 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [],
@@ -41,7 +42,8 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
     MatDividerModule,
     MatCheckboxModule,
     MatExpansionModule,
-    CdkAccordionModule
+    CdkAccordionModule,
+    MatGridListModule
   ],
   exports: [
     MatSidenavModule,

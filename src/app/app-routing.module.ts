@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'newsfeed', component: NewsfeedComponent},
   { path: 'details/key', component: PostDetailComponent},
   { path: 'favourites', component: FavouritesComponent},
+  { path: 'about', component: AboutUsComponent},
   { path: '**', component: DashboardComponent}
 ];
 

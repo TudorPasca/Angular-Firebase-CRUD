@@ -5,6 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Element } from '../Element';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs';
+import { Article } from '../article';
+import { NewsService } from '../services/news.service';
+import { min } from 'rxjs-compat/operator/min';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,10 +17,11 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   
-  constructor(private firebaseService: FirebaseService, private authService: AuthService, public dialog: MatDialog) { }
+  constructor(private firebaseService: FirebaseService, private authService: AuthService, public dialog: MatDialog, private newsService: NewsService) { }
 
   displayedColumns = ['date_posted', 'title', 'category', 'open', 'delete', 'edit'];
   postList: Element[] = [];
+  articles: Article[] = [];
   currentUser;
 
   ngOnInit(): void {
@@ -26,17 +31,14 @@ export class DashboardComponent implements OnInit {
   init(){
     if(localStorage.getItem('email') && localStorage.getItem('password'))
     {
-      console.log("LOGGIN IN");
       this.authService.login(localStorage.getItem('email'), localStorage.getItem('password'))
       .then(() => {
         this.getCurrentUser();
       });
     }
     else
-    {
-      console.log("EMPTY");
       this.getCurrentUser();
-    }
+    this.getPostList();
   }
 
   getCurrentUser() {
@@ -58,17 +60,27 @@ export class DashboardComponent implements OnInit {
   }
   
   getPostList() {
-    let snap = this.firebaseService.getPostsList(this.currentUser.uid);
+    let count = 0;
+    let snap = this.newsService.getArticlesList();
     snap.snapshotChanges().subscribe(data => {
-      this.postList = [];
+      this.articles = [];
       data.forEach(item => {
         let a = item.payload.toJSON(); 
-        a['$key'] = item.key;
-        this.postList.push(a as Element);
+        a["key"] = item.key;
+        if (count < 3)
+          this.articles.push(a as Article);
+        count += 1;
       })
     });
   }
 
+  trimText(text: string, length: number) {
+    if (text.length < length)
+      length = text.length;
+    return text.substring(0, length);
+  }
+
+  /**
   addPost(): void {
     let dialogRef = this.dialog.open(DataFormComponent, {
       width: '600px',
@@ -96,6 +108,5 @@ export class DashboardComponent implements OnInit {
       this.getPostList();
     });
   }
-
-
+  */
 }

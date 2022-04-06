@@ -23,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
     ToolbarComponent,
     NewsfeedComponent,
     FavouritesComponent,
+    AboutUsComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -1,8 +1,3 @@
-.card {
-  width: 75%;
-  margin-top: 2vh;
-}
-
 .mat-table {
   overflow: auto;
   max-height: 500px;
@@ -12,29 +7,52 @@ a {
   cursor: pointer;
 }
 
-.addButton{
+.addButton {
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
   width: 100px;
 }
 
-.main-container{
+.container {
   margin-top: 5vh;
 }
 
-.title{
-  font-size: xx-large;
-}
-
-.mat-card-subtitle{
-  font-size: xx-large;
-  color: black;
-}
-
-.home-button{
-  width: 50%;
+.home-button {
+  width: 20%;
   height: 7vh;
   font-size: large;
   margin-top: 3vh;
+}
+
+.header-button {
+  width: 15vw;
+  height: 6vh;
+  font-size: x-large;
+  margin-top: 1vh;
+}
+
+.header {
+  margin-top: -5vh;
+  height: 60vh;
+  background-color: #7e57c2;
+}
+
+.articles-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 75%;
+  margin-top: -2vh;
+  margin-bottom: 2vh;
+}
+
+.article {
+  height: 40vh;
+  width: 20vw;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
 }

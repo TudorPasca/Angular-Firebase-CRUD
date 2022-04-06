@@ -1,24 +1,53 @@
 <app-toolbar></app-toolbar>
 
-<div class="container main-container">
-    <div fxLayout="column" fxLayoutAlign="center center" class="content">
-        <mat-card class="card">
-            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center" class = "title">
-                <h2>IT NEWS</h2>
-            </mat-card-title>
-            <mat-card-subtitle>
-                IT News posts the latest news regarding the world of tech. Take a look at our content about crypto, the blockchain and more by accessing the news section.
-                <div fxLayout="column" fxLayoutAlign="center center">
-                    <button mat-raised-button color="primary" class="home-button" routerLink="/newsfeed">News</button>
-                    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/login">Login</button>
-                    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/register">Register</button>
-                </div>
-            </mat-card-subtitle>
-        </mat-card>
-    </div>
+<div class="container">
+  <div color="primary" fxLayout="column" fxLayoutAlign="center center" class="header">
+    <p class="mat-display-3" style="color: white; font-weight: bold; margin-top: 6vh"> IT NEWS </p>
+    <p class="mat-display-1" style="color: white"> The best source for everything in tech </p>
+    <p class="mat-display-1" style="color: white">
+      <button mat-raised-button color="accent" class="header-button" routerLink="/newsfeed">
+        Latest news
+      </button>
+    </p>
+  </div>
 </div>
-    
+
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <p class="mat-display-1" style="font-weight: bold">Trending articles</p>
+  <div class="articles-container">
+    <mat-card class="article" *ngFor="let article of articles">
+      <mat-card-title> {{ article.title }} </mat-card-title>
+      <mat-card-subtitle> {{ article.author }} </mat-card-subtitle>
+      <mat-card-content class="card-content" fxLayout="column" fxLayoutAlign="center center"> 
+          {{ trimText(article.content, 250) }}... 
+          <button mat-fab color="primary">
+            <mat-icon>open_in_full</mat-icon>
+          </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="container" fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 2vh">
+    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/login">Login</button>
+    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/register">Register</button>
+    <button mat-raised-button color = "primary" class = "home-button" routerLink="/about">About Us</button>
+</div>
+
 <!-- 
+    <mat-card class="card">
+        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center" class = "title">
+            <h2>IT NEWS</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            IT News posts the latest news regarding the world of tech. Take a look at our content about crypto, the blockchain and more by accessing the news section.
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <button mat-raised-button color="primary" class="home-button" routerLink="/newsfeed">News</button>
+                <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/login">Login</button>
+                <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/register">Register</button>
+            </div>
+        </mat-card-subtitle>
+    </mat-card>
     <div class="container main-container" *ngIf="currentUser && postList.length">
         <div fxLayout="row" fxLayoutAlign="center center" class="content">
             <mat-card class="card">
