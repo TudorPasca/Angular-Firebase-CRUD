@@ -64,3 +64,8 @@
 .checkbox{
     margin-bottom: 2vh;
 }
+
+.wrapper {
+    background-color: #f3f3f3;
+    height: 100%;
+}

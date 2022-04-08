@@ -44,3 +44,8 @@
   .header{
     height: 20vh;
   }
+
+  .wrapper {
+    background-color: #f3f3f3;
+    height: 100%;
+}

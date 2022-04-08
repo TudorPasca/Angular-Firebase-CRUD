@@ -14,7 +14,7 @@ export class NewsfeedComponent implements OnInit {
   constructor(private newsService: NewsService, public authService: AuthService) { }
 
   displayedColumns = ['title', 'author'];
-  articles: Array<Article>;
+  articles: Article[] = [];
 
   ngOnInit(): void {
     this.getPostList();
@@ -30,12 +30,15 @@ export class NewsfeedComponent implements OnInit {
         this.articles.push(a as Article);
       })
     });
-    this.articles.forEach(i => {
-      console.log(i);
-    })
   }
 
   pushFavourite(article: Article) {
     this.newsService.pushFavourite(article);
+  }
+
+  trimText(text: string, length: number) {
+    if (text.length < length)
+      length = text.length;
+    return text.substring(0, length);
   }
 }

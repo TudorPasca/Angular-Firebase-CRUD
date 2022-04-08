@@ -80,6 +80,19 @@ export class DashboardComponent implements OnInit {
     return text.substring(0, length);
   }
 
+  printArticle(id: string) {
+    console.log(id);
+    let aux;
+    let snap = this.newsService.getArticle(id);
+    snap.snapshotChanges().subscribe(data => {
+      let a = data.payload.toJSON();
+      console.log(a);
+      a['key'] = data.key
+      aux = a as Article;
+    });
+    console.log(aux.title);
+  }
+
   /**
   addPost(): void {
     let dialogRef = this.dialog.open(DataFormComponent, {
