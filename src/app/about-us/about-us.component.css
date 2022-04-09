@@ -1,6 +1,6 @@
 .wrapper {
     background-color: #f3f3f3;
-    height: 190%;
+    height: 200%;
 }
 
 .container {
@@ -22,7 +22,7 @@
 }
 
 .card {
-    height: 40vh;
+    height: 44vh;
     width: 15vw;
     margin-top: -7vh;
 }
