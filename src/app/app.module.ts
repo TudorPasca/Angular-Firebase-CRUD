@@ -50,7 +50,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   entryComponents: [
     DataFormComponent

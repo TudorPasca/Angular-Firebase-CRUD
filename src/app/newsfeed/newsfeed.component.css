@@ -31,10 +31,4 @@
 
 .wrapper {
   background-color: #f3f3f3;
-  height: 300vh;
-}
-
-.button-wrapper {
-  display: flex;
-  justify-content: space-around;
 }

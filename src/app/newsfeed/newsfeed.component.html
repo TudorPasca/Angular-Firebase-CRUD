@@ -4,18 +4,18 @@
   <div class="container">
     <div color="primary" fxLayout="column" fxLayoutAlign="center center" class="header">
       <p class="mat-display-2" style="font-weight: bold; margin-top: 3vh"> Newsfeed </p>
-      <p class="headline" style="margin-top: -5vh"> IT News keeps you up to date to the latest news regarding tech, crypto and more</p>
+      <p class="mat-title" style="margin-top: -5vh"> IT News keeps you up to date to the latest news regarding tech, crypto and more</p>
     </div>
   </div>
   
-  <div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <div class="container" fxLayout="column" fxLayoutAlign="center center" style="background-color: #f3f3f3;">
     <mat-card class="article" *ngFor = "let article of articles">
       <mat-card-title style="font-size: xx-large;"> {{ article.title }} </mat-card-title>
       <mat-card-subtitle> {{ article.author }} </mat-card-subtitle>
       <mat-card-content fxLayout="row" style="margin-top: 3vh;"> 
         <img mat-card-image class="card-image" src="{{ article.image_url }}" alt="Article photo"/>
         <div fxLayout = "column" style="width: 80%;">
-          {{ trimText(article.content, 600) }}... 
+          {{ trimText(article.content, 400) }}... 
           <div fxLayout = "row" fxLayoutAlign="center center" class = "button-wrapper">
             <button mat-fab color = "primary" routerLink='/details/{{article.key}}'
             [queryParams]="{key: article.key}">

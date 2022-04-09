@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../article';
 import { AuthService } from '../services/auth.service';
@@ -12,7 +13,6 @@ export class FavouritesComponent implements OnInit {
 
   constructor(private newsService: NewsService, public authService: AuthService) { }
 
-  displayedColumns = ['title', 'author'];
   articles: Array<Article>;
 
   ngOnInit(): void {
@@ -25,16 +25,19 @@ export class FavouritesComponent implements OnInit {
       this.articles = [];
       data.forEach(item => {
         let a = item.payload.toJSON(); 
-        a["key"] = item.key;
+        a["source"] = item.key;
         this.articles.push(a as Article);
       })
     });
-    this.articles.forEach(i => {
-      console.log(i);
-    })
   }
 
   deleteFavourite(key: string) {
     this.newsService.deleteFavourite(key);
+  }
+
+  trimText(text: string, length: number) {
+    if (text.length < length)
+      length = text.length;
+    return text.substring(0, length);
   }
 }
