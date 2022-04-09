@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'details/key', component: PostDetailComponent},
   { path: 'favourites', component: FavouritesComponent},
   { path: 'about', component: AboutUsComponent},
+  { path: 'video', component: VideoComponent},
   { path: '**', component: DashboardComponent}
 ];
 

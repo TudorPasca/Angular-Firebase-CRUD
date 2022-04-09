@@ -24,6 +24,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     NewsfeedComponent,
     FavouritesComponent,
     AboutUsComponent,
+    VideoComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

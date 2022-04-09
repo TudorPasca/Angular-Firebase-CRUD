@@ -3,7 +3,7 @@
 <mat-card class="container">
     <mat-card-header>
         <mat-card-title>
-            <h3 class="title">Login</h3>
+            <h3 class="title">Autentificare</h3>
         </mat-card-title>
     </mat-card-header>
     <mat-card-content class="content">
@@ -17,19 +17,19 @@
                     name="password">
             </mat-form-field>
         </form>
-        <mat-checkbox class="checkbox" id = "checkbox" [(ngModel)]="checked">Keep me logged in</mat-checkbox>
+        <mat-checkbox class="checkbox" id = "checkbox" [(ngModel)]="checked">Păstrează-mă autentificat</mat-checkbox>
         <div>
-            If you don't have an account, 
-            <a routerLink='/register'>register</a>
-            now
+            Dacă nu ai cont, 
+            <a routerLink='/register'>înregistrează-te</a>
+            acum
         </div>
         <div *ngIf="error" class = "error">
             {{error}}
         </div>
     </mat-card-content>
     <div mat-card-actions class = "buttons">
-        <button mat-raised-button class ="submit" type="submit" color="primary" (click)="onSubmit()" [disabled]="!isValid()">Submit</button>
-        <button mat-raised-button class="return" color="warn" routerLink='/home'>Return</button>
+        <button mat-raised-button class ="submit" type="submit" color="primary" (click)="onSubmit()" [disabled]="!isValid()">Trimite</button>
+        <button mat-raised-button class="return" color="warn" routerLink='/home'>Întoarce</button>
     </div>
 </mat-card>
 </div>

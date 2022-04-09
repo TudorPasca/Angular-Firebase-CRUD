@@ -4,19 +4,23 @@
         <a mat-list-item routerLink="/home" id="title"> IT NEWS </a>
         <a mat-list-item routerLink="/home">
           <mat-icon class="icon">home</mat-icon>
-          <span class="label">Home</span>
+          <span class="label">Acasă</span>
         </a>
         <a mat-list-item routerLink="/newsfeed">
           <mat-icon class="icon">article</mat-icon>
-          <span class="label">News</span>
+          <span class="label">Știri</span>
+        </a>
+        <a mat-list-item routerLink="/video">
+          <mat-icon class="icon">play_circle</mat-icon>
+          <span class="label">Video</span>
         </a>
         <a mat-list-item routerLink="/about">
           <mat-icon class="icon">info</mat-icon>
-          <span class="label">About Us</span>
+          <span class="label">Despre noi</span>
         </a>
         <a mat-list-item *ngIf="authService.userState | async" routerLink="/favourites">
           <mat-icon class="icon">favorite</mat-icon>
-          <span class="label">Favourites</span>
+          <span class="label">Favorite</span>
         </a>
       </mat-nav-list>
     </div>
@@ -28,7 +32,7 @@
           routerLink="/login"
         >
           <mat-icon class="icon">input</mat-icon>
-          <span class="label">Login</span>
+          <span class="label">Autentificare</span>
         </a>
         <a
           mat-list-item
@@ -36,7 +40,7 @@
           routerLink="/register"
         >
           <mat-icon class="icon">input</mat-icon>
-          <span class="label">Register</span>
+          <span class="label">Înregistrare</span>
         </a>
         <a
           mat-list-item

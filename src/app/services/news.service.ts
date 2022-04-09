@@ -32,4 +32,7 @@ export class NewsService {
     return this.db.list('favourites');
   }
 
+  getVideosList() {
+    return this.db.list('videos');
+  }
 }

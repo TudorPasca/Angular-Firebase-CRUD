@@ -5,17 +5,17 @@
     <div class="container">
         <div color="primary" fxLayout="column" fxLayoutAlign="center center" class="header">
             <p class="mat-display-3" style="color: white; font-weight: bold; margin-top: 6vh"> IT NEWS </p>
-            <p class="mat-display-1" style="color: white"> The best source for everything in tech </p>
+            <p class="mat-display-1" style="color: white"> Cele mai noi știri din domeniul tehnologiei </p>
             <p class="mat-display-1" style="color: white">
                 <button mat-raised-button color="accent" class="header-button" routerLink="/newsfeed">
-        Latest news
-    </button>
-</p>
-</div>
-</div>
+                    Citește mai multe
+                </button>
+            </p>
+        </div>
+    </div>
 
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
-    <p class="mat-display-1" style="font-weight: bold">Trending articles</p>
+    <p class="mat-display-1" style="font-weight: bold">Cele mai citite</p>
     <div class="articles-container">
         <mat-card routerLink='/details/{{article.key}}'
         [queryParams]="{key: article.key}" class="article" *ngFor="let article of articles">
@@ -29,9 +29,9 @@
 </div>
 
 <div class="container" fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 2vh">
-    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/login">Login</button>
-    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/register">Register</button>
-    <button mat-raised-button color = "primary" class = "home-button" routerLink="/about">About Us</button>
+    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/login">Autentificare</button>
+    <button mat-raised-button *ngIf="!currentUser" color="primary" class="home-button" routerLink="/register">Înregistrare</button>
+    <button mat-raised-button color = "primary" class = "home-button" routerLink="/about">Despre noi</button>
 </div>
 </div>
 
