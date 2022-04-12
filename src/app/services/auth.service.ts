@@ -24,15 +24,15 @@ export class AuthService {
     const result = await this.firebaseAuth
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
-      console.log('Nice, it worked!');
+      //console.log('Nice, it worked!');
       return Promise.resolve('');
     })
     .catch(err => {
-      console.log('Something went wrong:',err.message);
+      //console.log('Something went wrong:',err.message);
       return Promise.resolve(err.message);
     });;
 
-    console.log(result);
+    //console.log(result);
     return Promise.resolve(result);
   }
 
@@ -40,15 +40,15 @@ export class AuthService {
     const result = await this.firebaseAuth
     .signInWithEmailAndPassword(email, password)
     .then(() => {
-      console.log('Nice, it worked!');
+      //console.log('Nice, it worked!');
       return Promise.resolve('');
     })
     .catch(err => {
-      console.log('Something went wrong:',err.message);
+      //console.log('Something went wrong:',err.message);
       return Promise.resolve(err.message);
     });;
 
-    console.log(result);
+    //console.log(result);
     return Promise.resolve(result);
   }
 

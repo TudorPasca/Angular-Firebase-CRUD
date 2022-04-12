@@ -30,7 +30,7 @@ export class PostDetailComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.getArticle();
-    })
+    });
   }
 
   ngOnDestroy(): void {
@@ -41,9 +41,8 @@ export class PostDetailComponent implements OnInit {
     let snap = this.newsService.getArticle(this.id);
     snap.snapshotChanges().subscribe(data => {
       let a = data.payload.toJSON();
-      console.log(a);
-      a['key'] = data.key
+      a['key'] = data.key;
       this.article = a as Article;
-    })
+    });
   }
 }
