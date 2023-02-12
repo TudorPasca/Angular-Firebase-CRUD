@@ -121,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "my-angular-firebase-crud"
+  "defaultProject": "my-angular-firebase-crud",
+  "cli": {
+    "analytics": "3161d9ea-b494-4ad3-ad10-5ee116721f64"
+  }
 }
