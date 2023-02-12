@@ -1,3 +1,3 @@
 # MyAngularFirebaseCrud
 
-A web app using Angular Material and Google Firebase. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+A news website using Angular Material and Google Firebase. It has features such as: browsing the news, account creation, saving articles into your account, etc.
